@@ -5,6 +5,7 @@ import random
 import re
 import sqlite3
 import threading
+from io import open
 
 from yowsup.layers.interface                           import YowInterfaceLayer, ProtocolEntityCallback
 from yowsup.layers.protocol_messages.protocolentities  import TextMessageProtocolEntity
