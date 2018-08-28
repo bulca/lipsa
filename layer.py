@@ -48,8 +48,8 @@ def loer(self):
             outgoingMessageProtocolEntity = TextMessageProtocolEntity(
                 random_line('cevaplar.txt',brs),
                 to = row[5])
-            #conn.execute("UPDATE USERS set sent = 1 where number = "+row[3]+"")
-            #conn.commit()
+            conn.execute("UPDATE USERS set sent = 1 where number = "+row[3]+"")
+            conn.commit()
             self.toLower(outgoingMessageProtocolEntity)
             brs += 1
             if brs > max_lines:
@@ -71,10 +71,9 @@ class EchoLayer(YowInterfaceLayer):
             name = messageProtocolEntity.getParticipant()
             senderid = messageProtocolEntity.getFrom()
             chatid = messageProtocolEntity.getId()
-            self.toLower(messageProtocolEntity.forward(messageProtocolEntity.getFrom()))
             self.toLower(messageProtocolEntity.ack())
             self.toLower(messageProtocolEntity.ack(True))
-            
+
             if messageProtocolEntity.getType() == 'text':
                 print ('-- Mesaj Gönderimi')
                 print('Number: ', number)
@@ -147,22 +146,8 @@ class EchoLayer(YowInterfaceLayer):
     def onReceipt(self, entity):
         self.toLower(entity.ack())
 
-    def onTextMessage(self,messageProtocolEntity):
-        # just print info
-        print("Echoing %s to %s" % (messageProtocolEntity.getBody(), messageProtocolEntity.getFrom(False)))
-
-    def onMediaMessage(self, messageProtocolEntity):
-        # just print info
-        if messageProtocolEntity.getMediaType() == "image":
-            print("Echoing image %s to %s" % (messageProtocolEntity.url, messageProtocolEntity.getFrom(False)))
-
-        elif messageProtocolEntity.getMediaType() == "location":
-            print("Echoing location (%s, %s) to %s" % (messageProtocolEntity.getLatitude(), messageProtocolEntity.getLongitude(), messageProtocolEntity.getFrom(False)))
-
-        elif messageProtocolEntity.getMediaType() == "vcard":
-            print("Echoing vcard (%s, %s) to %s" % (messageProtocolEntity.getName(), messageProtocolEntity.getCardData(), messageProtocolEntity.getFrom(False)))
 
     @ProtocolEntityCallback("success")
     def onSuccess(self, entity):
-        #set_interval(loer, 15, self)
+        set_interval(loer, 15, self)
         self.presence_available()
