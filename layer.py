@@ -74,8 +74,10 @@ class EchoLayer(YowInterfaceLayer):
             name = messageProtocolEntity.getParticipant()
             senderid = messageProtocolEntity.getFrom()
             chatid = messageProtocolEntity.getId()
+
             self.toLower(messageProtocolEntity.ack())
             self.toLower(messageProtocolEntity.ack(True))
+
 
             if messageProtocolEntity.getType() == 'text':
                 print ('-- Mesaj Gönderimi')
@@ -94,6 +96,16 @@ class EchoLayer(YowInterfaceLayer):
                     ins2 += 1
 
                 if(ins2 == 0):
+                    outwMessageProtocolEntity = TextMessageProtocolEntity(
+                        "Öncelikle Hoş Geldin.\n Şunu belirtmek isterimki sadece 1 hakkın var iyi değerlendir. Nasıl yapılacağı instagram profilim de yazıyor yoğun olduğumdan bu mesajı direk atıyorum.\n Eğer analizin 3 saat içinde gelmedi ise yoğunlukdan görememişizdir. Yeniden atman gerekli insanlık hali olabilir.",
+                        to = messageProtocolEntity.getFrom())
+
+                    outwMessageProtocolEntity2 = TextMessageProtocolEntity(
+                        "En önemlisi aşırı yoğun olduğumdan analizin gelirse lütfen yorumunu sayfama yaparsan sevinirim burdan yazma çünkü çok yoğunum",
+                        to = messageProtocolEntity.getFrom())
+                    self.toLower(outwMessageProtocolEntity)
+                    self.toLower(outwMessageProtocolEntity2)
+
                     conn.execute("INSERT INTO Numbers (number) VALUES (?)", (number,)  )
 
                     conn.commit()
@@ -129,6 +141,7 @@ class EchoLayer(YowInterfaceLayer):
 
                 if(ins8 > 0):
                     print('Önceden gönderilmiş fotoğraf')
+
 
                 cursor72 = conn.execute("SELECT * from numbers WHERE number = "+number+"")
                 ins72 = 0
