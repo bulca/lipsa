@@ -94,6 +94,7 @@ class EchoLayer(YowInterfaceLayer):
                 ins2 = 0
                 for row2 in cursor2:
                     ins2 += 1
+                    
 
                 if(ins2 == 0):
                     outwMessageProtocolEntity = TextMessageProtocolEntity(
