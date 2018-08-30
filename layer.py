@@ -37,7 +37,7 @@ def lines(afile):
 
 def loer(self):
     REPLV = ['Önceden1', 'Önceden2', 'Önceden3']
-    TIMEL = 5400
+    TIMEL = 15
     CEL_FALI = ['Ucretlı fal için v.çb .v.b.b.b.b.b.']
     #CELSE = ['Öncelikle hoşgeldin. Lütfen dikkatlice oku kafanda herhangi bir soru işareti kalmasın. Kahveni içtikten sonra bana kahve fincanının 3-4 adet farklı açıdan fotoğraflarını çekip at.', 'Hoş geldin', 'Hoş geldin laaaaaa']
     conn = sqlite3.connect('data.db')
@@ -98,14 +98,9 @@ class EchoLayer(YowInterfaceLayer):
 
                 if(ins2 == 0):
                     outwMessageProtocolEntity = TextMessageProtocolEntity(
-                        "Oncelikle Hos Geldin. Sunu belirtmek isterimki sadece 1 hakkin var iyi degerlendir. Nasil yapilacagi instagram profilim de yaziyor yogun oldugumdan bu mesaji direk atiyorum. Eger analizin 3 saat icinde gelmedi ise yogunlukdan gorememisizdir. Yeniden atman gerekli insanlik hali olabilir.",
-                        to = messageProtocolEntity.getFrom())
-
-                    outwMessageProtocolEntity2 = TextMessageProtocolEntity(
-                        "En onemlisi asiri yogun oldugumdan analizin gelirse lutfen yorumunu sayfama yaparsan sevinirim burdan yazma cunku cok yogunum",
+                        "Oncelikle Hos Geldin. Sunu belirtmek isterimki sadece 1 hakkin var iyi degerlendir. Nasil yapilacagi instagram profilim de yaziyor yogun oldugumdan bu mesaji direk atiyorum. Eger analizin 3 saat icinde gelmedi ise yogunlukdan gorememisizdir. Yeniden atman gerekli insanlik hali olabilir. En onemlisi asiri yogun oldugumdan analizin gelirse lutfen yorumunu sayfama yaparsan sevinirim burdan yazma cunku cok yogunum",
                         to = messageProtocolEntity.getFrom())
                     self.toLower(outwMessageProtocolEntity)
-                    self.toLower(outwMessageProtocolEntity2)
 
                     conn.execute("INSERT INTO Numbers (number) VALUES (?)", (number,)  )
 
