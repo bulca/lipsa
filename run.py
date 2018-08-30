@@ -5,7 +5,7 @@ from yowsup.layers import YowLayerEvent
 from yowsup.layers.network import YowNetworkLayer
 from yowsup.env import YowsupEnv
 
-credentials = ("905352416069", "ebEflZhpWQ15vUvi934utLnozlY=") # replace with your phone and password
+credentials = ("905352416069", "y3jWFYZclAWyUdWjoE9L8TamvxM=") # replace with your phone and password
 
 if __name__==  "__main__":
     stackBuilder = YowStackBuilder()
@@ -18,3 +18,5 @@ if __name__==  "__main__":
     stack.setCredentials(credentials)
     stack.broadcastEvent(YowLayerEvent(YowNetworkLayer.EVENT_STATE_CONNECT))   #sending the connect signal
     stack.loop() #this is the program mainloop
+
+#905459091896
