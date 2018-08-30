@@ -97,10 +97,7 @@ class EchoLayer(YowInterfaceLayer):
 
 
                 if(ins2 == 0):
-                    outwMessageProtocolEntity = TextMessageProtocolEntity(
-                        "Oncelikle Hos Geldin. Sunu belirtmek isterimki sadece 1 hakkin var iyi degerlendir. Nasil yapilacagi instagram profilim de yaziyor yogun oldugumdan bu mesaji direk atiyorum. Eger analizin 3 saat icinde gelmedi ise yogunlukdan gorememisizdir. Yeniden atman gerekli insanlik hali olabilir. En onemlisi asiri yogun oldugumdan analizin gelirse lutfen yorumunu sayfama yaparsan sevinirim burdan yazma cunku cok yogunum",
-                        to = messageProtocolEntity.getFrom())
-                    self.toLower(outwMessageProtocolEntity)
+                    
 
                     conn.execute("INSERT INTO Numbers (number) VALUES (?)", (number,)  )
 
